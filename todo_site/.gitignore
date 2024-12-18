@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+db.sqlite3
+
+# Virtual Environment
+venv/
+env/
+
+# Django migrations
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Logs
+*.log
+*.log.*
+*.out
+*.err
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+*.pid
+*.tar
+*.bak
+docker-compose.override.yml
+*.env
+
+# Secrets and Credentials
+**/local_settings.py
+.env
+.env.*.local
+
+# Static files
+/static/
+media/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node modules (if frontend files exist)
+node_modules/
+
+# Python dependency lockfiles
+Pipfile.lock

@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  mysql_db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password   # Пароль для root
+      MYSQL_DATABASE: todo_db         # Создаётся база данных
+    ports:
+      - "3306:3306"
+    volumes:
+      - todo_site_mysql_data:/var/lib/mysql
+
+  django_app:
+    build: .
+    command: sh -c "/wait_for_mysql.sh python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - mysql_db
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=mysql_db
+      - DB_NAME=todo_db
+      - DB_USER=root
+      - DB_PASSWORD=password
+
+volumes:
+  todo_site_mysql_data:
