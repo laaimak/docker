@@ -6,7 +6,9 @@ RUN apk add --no-cache \
     gcc \
     musl-dev \
     python3-dev \
-    pkgconfig
+    pkgconfig && \
+    rm -rf /var/cache/apk/*
+
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
